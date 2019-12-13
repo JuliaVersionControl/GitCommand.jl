@@ -5,10 +5,15 @@
 
 GitCommand allows you to use command-line Git in your Julia packages. You do
 not need to have Git installed on your computer, and neither do the users of
-your packages! GitCommand provides a Git binary via
+your packages!
+
+GitCommand provides a Git binary via
 [Git_jll](https://github.com/JuliaBinaryWrappers/Git_jll.jl).
 Git_jll uses the Pkg Artifacts system, and therefore Git_jll and GitCommand
 require at least Julia 1.3.
+
+GitCommand is intended to work on any platform that supports Julia,
+including (but not limited to) Linux, macOS, and Windows.
 
 # Example usage
 
