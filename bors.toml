@@ -6,6 +6,7 @@ status = [
     "codecov/patch",
     "codecov/project",
     "continuous-integration/travis-ci/push",
+    "FreeBSD",
     "VersionVigilante",
 ]
 
