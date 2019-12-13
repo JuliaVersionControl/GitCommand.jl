@@ -8,20 +8,54 @@ branches:
 
 jobs:
   include:
+    - os: linux
+      arch: x64
+      julia: "1.3"
+      name: "Julia 1.3 (64-bit)"
+    - os: linux
+      arch: x64
+      julia: nightly
+      name: "Julia nightly (64-bit)"
+    - os: linux
+      arch: x86
+      julia: "1.3"
+      name: "Julia 1.3 (32-bit)"
+    - os: linux
+      arch: x86
+      julia: nightly
+      name: "Julia nightly (32-bit)"
+    - os: linux
+      arch: arm64
+      julia: "1.3"
+      name: "Julia 1.3 (AArch64)"
+    - os: linux
+      arch: arm64
+      julia: nightly
+      name: "Julia nightly (AArch64)"
+    - os: osx
+      julia: "1.3"
+    - os: osx
+      julia: nightly
+      name: "Julia nightly"
     - os: windows
       arch: x64
-      julia: 1.0
-    - os: windows
-      arch: x86
-      julia: 1.0
-      name: "Julia 1 (32bit)"
+      julia: "1.3"
+      name: "Julia 1.3 (64-bit)"
     - os: windows
       arch: x64
-      julia: 1.1
+      julia: nightly
+      name: "Julia nightly (64-bit)"
     - os: windows
       arch: x86
-      julia: 1.1
-      name: "Julia 1.1 (32bit)"
+      julia: "1.3"
+      name: "Julia 1.3 (32-bit)"
+    - os: windows
+      arch: x86
+      julia: nightly
+      name: "Julia nightly (32-bit)"
+  
+
+      
 
 julia:
   - "1.3"
