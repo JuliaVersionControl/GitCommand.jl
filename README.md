@@ -16,11 +16,18 @@ require at least Julia 1.3.
 GitCommand is intended to work on any platform that supports Julia,
 including (but not limited to) Windows, macOS, Linux, and FreeBSD.
 
-# Example usage
+# Examples
 
 ```julia
 using GitCommand
-git_cmd() do git_path
-    run(`$(git_path) clone https://github.com/JuliaRegistries/General`)
+
+run(git`clone https://github.com/JuliaRegistries/General`)
+```
+
+```julia
+using GitCommand
+
+git() do git
+    run(`$git clone https://github.com/JuliaRegistries/General`)
 end
 ```
