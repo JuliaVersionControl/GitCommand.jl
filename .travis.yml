@@ -1,8 +1,3 @@
-arch:
-  - x86
-  - x64
-  - arm64
-
 branches:
   only:
   - master
@@ -11,64 +6,61 @@ branches:
   - /^release\/.*$/ # release branches
   - /^v[0-9]+\.[0-9]+\.[0-9]+$/ # version tags
 
-# jobs:
-#   include:
-#     - os: linux
-#       arch: x64
-#       julia: "1.3"
-#       name: "Julia 1.3 (64-bit)"
-#     - os: linux
-#       arch: x64
-#       julia: nightly
-#       name: "Julia nightly (64-bit)"
-#     - os: linux
-#       arch: x86
-#       julia: "1.3"
-#       name: "Julia 1.3 (32-bit)"
-#     - os: linux
-#       arch: x86
-#       julia: nightly
-#       name: "Julia nightly (32-bit)"
-#     - os: linux
-#       arch: arm64
-#       julia: "1.3"
-#       name: "Julia 1.3 (AArch64)"
-#     - os: linux
-#       arch: arm64
-#       julia: nightly
-#       name: "Julia nightly (AArch64)"
-#     - os: osx
-#       julia: "1.3"
-#     - os: osx
-#       julia: nightly
-#       name: "Julia nightly"
-#     - os: windows
-#       arch: x64
-#       julia: "1.3"
-#       name: "Julia 1.3 (64-bit)"
-#     - os: windows
-#       arch: x64
-#       julia: nightly
-#       name: "Julia nightly (64-bit)"
-#     - os: windows
-#       arch: x86
-#       julia: "1.3"
-#       name: "Julia 1.3 (32-bit)"
-#     - os: windows
-#       arch: x86
-#       julia: nightly
-#       name: "Julia nightly (32-bit)"      
-
-julia:
-  - "1.3"
-  - nightly
+jobs:
+  include:
+    - os: linux
+      arch: x64
+      julia: "1.3"
+      name: "Linux 1.3 64-bit"
+    - os: linux
+      arch: x64
+      julia: nightly
+      name: "Linux nightly 64-bit"
+    - os: linux
+      arch: x86
+      julia: "1.3"
+      name: "Linux 1.3 32-bit"
+    - os: linux
+      arch: x86
+      julia: nightly
+      name: "Linux nightly 32-bit"
+    - os: linux
+      arch: arm64
+      julia: "1.3"
+      name: "Linux 1.3 AArch64"
+    - os: linux
+      arch: arm64
+      julia: nightly
+      name: "Linux nightly AArch64"
+    - os: osx
+      julia: "1.3"
+      name: "macOS 1.3"
+    - os: osx
+      julia: nightly
+      name: "macOS nightly"
+    - os: windows
+      arch: x64
+      julia: "1.3"
+      name: "Win 1.3 64-bit"
+    - os: windows
+      arch: x64
+      julia: nightly
+      name: "Win nightly 64-bit"
+    - os: windows
+      arch: x86
+      julia: "1.3"
+      name: "Win 1.3 32-bit"
+    - os: windows
+      arch: x86
+      julia: nightly
+      name: "Win nightly 32-bit"
 
 language: julia
 
-os:
-  - linux
-  - osx
-  - windows
+# os:
+#   - linux
+#   - osx
+#   - windows
 
 notifications:
   email: false
