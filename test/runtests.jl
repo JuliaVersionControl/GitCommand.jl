@@ -14,7 +14,7 @@ end
 
 @testset "GitCommand.jl" begin
     if Sys.iswindows()
-#         @test GitCommand._separator() == ';'
+        @test GitCommand._separator() == ';'
     else
         @test GitCommand._separator() == ':'
     end
