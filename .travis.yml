@@ -71,10 +71,10 @@ jobs:
 
 language: julia
 
-# os:
-#   - linux
-#   - osx
-#   - windows
+os:
+  - linux
+  - osx
+  - windows
 
 notifications:
   email: false
