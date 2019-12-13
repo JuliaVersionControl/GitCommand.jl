@@ -5,6 +5,7 @@ delete_merged_branches = true
 status = [
     "codecov/patch",
     "codecov/project",
+    "continuous-integration/drone/push",
     "continuous-integration/travis-ci/push",
     "VersionVigilante",
 ]
