@@ -21,13 +21,13 @@ including (but not limited to) Windows, macOS, Linux, and FreeBSD.
 ```julia
 using GitCommand
 
-run(git`clone https://github.com/JuliaRegistries/General`)
+git() do git
+    run(`$git clone https://github.com/JuliaRegistries/General`)
+end
 ```
 
 ```julia
 using GitCommand
 
-git() do git
-    run(`$git clone https://github.com/JuliaRegistries/General`)
-end
+run(git`clone https://github.com/JuliaRegistries/General`)
 ```
