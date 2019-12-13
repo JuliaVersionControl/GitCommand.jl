@@ -5,9 +5,9 @@ import Git_jll
 export git_cmd
 
 function _separator()
-    if Sys.iswindows()
-        return ';'
-    end
+#     if Sys.iswindows()
+#         return ';'
+#     end
     return ':'
 end
 
