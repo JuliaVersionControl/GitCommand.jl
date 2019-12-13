@@ -5,18 +5,21 @@ import Git_jll
 export git_cmd
 
 function _separator()
-#     if Sys.iswindows()
-#         return ';'
-#     end
+    if Sys.iswindows()
+        return ';'
+    end
     return ':'
 end
 
 function git_cmd(f::Function;
                  adjust_PATH::Bool = true,
                  adjust_LIBPATH::Bool = true)
-    return Git_jll.git(;
-                       adjust_PATH = adjust_PATH,
-                       adjust_LIBPATH = adjust_LIBPATH) do git_path
+    if Sys.iswindows()
+        return Git_jll.git(f; adjust_PATH = adjust_PATH,
+                              adjust_LIBPATH = adjust_LIBPATH)
+    end
+    return Git_jll.git(; adjust_PATH = adjust_PATH,
+                         adjust_LIBPATH = adjust_LIBPATH) do git_path
         git_core = joinpath(dirname(dirname(git_path)),
                             "libexec",
                             "git-core")
