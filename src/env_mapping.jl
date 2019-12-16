@@ -1,5 +1,5 @@
 function _env_mapping(; adjust_PATH::Bool = true,
-                                     adjust_LIBPATH::Bool = true)
+                        adjust_LIBPATH::Bool = true)
     if Sys.iswindows()
         git_path, env_mapping = Git_jll.git(; adjust_PATH = adjust_PATH,
                                               adjust_LIBPATH = adjust_LIBPATH) do git_path
