@@ -13,7 +13,7 @@ branches:
 
 jobs:
   allow_failures:
-    - julia: nightly
+    # - julia: nightly
   fast_finish: true
   include:
     - os: windows
