@@ -3,7 +3,7 @@ freebsd_instance:
 task:
   name: FreeBSD
   # only_if: ($CIRRUS_BRANCH !=~ 'pull/.*') && ($BRANCH == "master" || $BRANCH == "staging" || $BRANCH == "trying")
-  only_if: ($CIRRUS_BRANCH !=~ 'pull/.*') && ($BRANCH == "master" || $BRANCH == "staging" || $BRANCH == "trying")
+  only_if: $BRANCH == "master" || $BRANCH == "staging" || $BRANCH == "trying"
   env:
     matrix:
       - JULIA_VERSION: "1.3"
