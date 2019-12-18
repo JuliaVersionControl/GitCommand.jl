@@ -1,7 +1,7 @@
 name = "GitCommand"
 uuid = "49b5b516-ca3f-4003-a081-42bdcf55082d"
 authors = ["Dilum Aluthge", "Brown Center for Biomedical Informatics"]
-version = "0.1.1"
+version = "0.1.2"
 
 [deps]
 Git_jll = "f8c6e375-362e-5223-8a59-34ff63f689eb"
