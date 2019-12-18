@@ -7,6 +7,7 @@ export git
 
 include("env_mapping.jl")
 include("git_cmd.jl")
+include("nonpublic.jl")
 include("public.jl")
 include("util.jl")
 
