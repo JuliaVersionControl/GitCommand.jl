@@ -16,21 +16,28 @@ function _env_mapping(; adjust_PATH::Bool = true,
     end
     git_path, env_mapping = Git_jll.git(; adjust_PATH = adjust_PATH,
                                           adjust_LIBPATH = adjust_LIBPATH) do git_path
-        git_core = joinpath(dirname(dirname(git_path)), "libexec", "git-core")
+        sep = _separator()
+    
+        root = dirname(dirname(git_path))
+        
+        libexec = joinpath(root, "libexec")
+        libexec_git_core = joinpath(libexec, "git-core")
+        
+        share = joinpath(root, "share")
+        share_git_core = joinpath(share, "git-core")
+        share_git_core_templates = joinpath(share_git_core, "templates")
+        
         libcurlpath = dirname(Git_jll.LibCURL_jll.libcurl_path)
         originallibpath = get(ENV, Git_jll.LIBPATH_env, "")
+        newlibpath = "$(libcurlpath)$(sep)$(originallibpath)"
+        
         ssl_cert = joinpath(dirname(Sys.BINDIR), "share", "julia", "cert.pem")
-        # templatedir = "/usr/share/git-core/template"
-        # templatedir = "/workspace/destdir/share/git-core/templates"
-        templatedir = 
-
-        sep = _separator()
 
         env_mapping = Dict{String,String}()
-        env_mapping["GIT_EXEC_PATH"] = git_core
+        env_mapping["GIT_EXEC_PATH"] = libexec_git_core
         env_mapping["GIT_SSL_CAINFO"] = ssl_cert
-        env_mapping["GIT_TEMPLATE_DIR"] = templatedir
-        env_mapping[Git_jll.LIBPATH_env] = "$(libcurlpath)$(sep)$(originallibpath)"
+        env_mapping["GIT_TEMPLATE_DIR"] = share_git_core_templates
+        env_mapping[Git_jll.LIBPATH_env] = newlibpath
         if haskey(ENV, "PATH")
             env_mapping["PATH"] = ENV["PATH"]
         end
