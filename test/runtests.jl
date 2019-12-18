@@ -30,7 +30,7 @@ end
     with_temp_dir() do tmp_dir
         @test !isdir("General")
         @test !isfile(joinpath("General", "Registry.toml"))
-        cmd = git`clone https://github.com/JuliaRegistries/General`
+        cmd = GitCommand.git`clone https://github.com/JuliaRegistries/General`
         @test cmd isa Cmd
         run(cmd)
         @test isdir("General")

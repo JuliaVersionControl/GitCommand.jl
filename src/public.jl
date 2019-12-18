@@ -1,7 +1,3 @@
-macro git_cmd(ex)
-    return _git_cmd(ex)
-end
-
 function git(f::Function;
              adjust_PATH::Bool = true,
              adjust_LIBPATH::Bool = true)

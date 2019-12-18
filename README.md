@@ -25,9 +25,3 @@ git() do git
     run(`$git clone https://github.com/JuliaRegistries/General`)
 end
 ```
-
-```julia
-using GitCommand
-
-run(git`clone https://github.com/JuliaRegistries/General`)
-```
