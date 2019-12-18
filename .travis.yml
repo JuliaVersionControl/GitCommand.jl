@@ -13,8 +13,12 @@ branches:
 
 jobs:
   allow_failures:
-    - julia: nightly
+    # - julia: "nightly"
   fast_finish: true
+  exclude:
+    - os: linux
+      arch: "arm64"
+      julia: "nightly"
   include:
     - os: windows
       arch: "x86"
@@ -27,7 +31,7 @@ jobs:
 
 julia:
   - "1.3"
-  - nightly
+  - "nightly"
 
 language: julia
 
