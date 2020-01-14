@@ -2,7 +2,7 @@ name: VersionVigilante
 
 on:
   push:
-    branches:    
+    branches:
       - staging
       - trying
 
@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@v1.0.0
       - uses: julia-actions/setup-julia@latest
       - name: VersionVigilante.main
+        id: versionvigilante_main
         run: |
           julia -e 'using Pkg; Pkg.add("VersionVigilante")'
           julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/${{ github.repository }}")'
