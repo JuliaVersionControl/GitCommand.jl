@@ -11,11 +11,9 @@ const GIT_REPL_MODE_NAME = "GitCommand.jl Git REPL mode"
 const GIT_REPL_MODE_PROMPT_TEXT = "git> "
 const GIT_REPL_MODE_START_KEY = ','
 
-include("env_mapping.jl")
-include("git_cmd.jl")
-include("git_repl.jl")
-include("nonpublic.jl")
-include("public.jl")
-include("util.jl")
+include("env.jl")
+include("git.jl")
+include("repl.jl")
+include("utils.jl")
 
 end # end module GitCommand
