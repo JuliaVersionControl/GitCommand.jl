@@ -1,5 +1,6 @@
 module GitCommand
 
+import JLLWrappers
 import Git_jll
 import ReplMaker
 

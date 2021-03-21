@@ -7,8 +7,8 @@ function _env_mapping(; adjust_PATH::Bool = true,
             if haskey(ENV, "PATH")
                 env_mapping["PATH"] = ENV["PATH"]
             end
-            if haskey(ENV, Git_jll.LIBPATH_env)
-                env_mapping[Git_jll.LIBPATH_env] = ENV[Git_jll.LIBPATH_env]
+            if haskey(ENV, JLLWrappers.LIBPATH_env)
+                env_mapping[JLLWrappers.LIBPATH_env] = ENV[JLLWrappers.LIBPATH_env]
             end
             return git_path, env_mapping
         end
@@ -28,7 +28,7 @@ function _env_mapping(; adjust_PATH::Bool = true,
         share_git_core_templates = joinpath(share_git_core, "templates")
 
         libcurlpath = dirname(Git_jll.LibCURL_jll.libcurl_path)
-        originallibpath = get(ENV, Git_jll.LIBPATH_env, "")
+        originallibpath = get(ENV, JLLWrappers.LIBPATH_env, "")
         newlibpath = "$(libcurlpath)$(sep)$(originallibpath)"
 
         ssl_cert = joinpath(dirname(Sys.BINDIR), "share", "julia", "cert.pem")
@@ -37,7 +37,7 @@ function _env_mapping(; adjust_PATH::Bool = true,
         env_mapping["GIT_EXEC_PATH"] = libexec_git_core
         env_mapping["GIT_SSL_CAINFO"] = ssl_cert
         env_mapping["GIT_TEMPLATE_DIR"] = share_git_core_templates
-        env_mapping[Git_jll.LIBPATH_env] = newlibpath
+        env_mapping[JLLWrappers.LIBPATH_env] = newlibpath
         if haskey(ENV, "PATH")
             env_mapping["PATH"] = ENV["PATH"]
         end
