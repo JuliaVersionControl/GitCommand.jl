@@ -5,10 +5,11 @@ import JLLWrappers
 import REPL
 
 get_env(env) = get(ENV, env, nothing)
-const orig_libpath = get_env(JLLWrappers.LIBPATH_env)
-const orig_execpath = get_env("GIT_EXEC_PATH")
-const orig_cainfo = get_env("GIT_SSL_CAINFO")
-const orig_templatedir = get_env("GIT_TEMPLATE_DIR")
+
+const orig_libpath     = deepcopy(get_env(JLLWrappers.LIBPATH_env))
+const orig_execpath    = deepcopy(get_env("GIT_EXEC_PATH"))
+const orig_cainfo      = deepcopy(get_env("GIT_SSL_CAINFO"))
+const orig_templatedir = deepcopy(get_env("GIT_TEMPLATE_DIR"))
 
 include("test-utils.jl")
 
