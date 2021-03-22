@@ -23,11 +23,9 @@ include("test-utils.jl")
     with_temp_dir() do tmp_dir
         @test !isdir("GitCommand.jl")
         @test !isfile(joinpath("GitCommand.jl", "Project.toml"))
-        git() do git
-            @test !isdir("GitCommand.jl")
-            @test !isfile(joinpath("GitCommand.jl", "Project.toml"))
-            run(`$git clone https://github.com/JuliaVersionControl/GitCommand.jl`)
-        end
+        @test !isdir("GitCommand.jl")
+        @test !isfile(joinpath("GitCommand.jl", "Project.toml"))
+        run(`$(git()) clone https://github.com/JuliaVersionControl/GitCommand.jl`)
         @test isdir("GitCommand.jl")
         @test isfile(joinpath("GitCommand.jl", "Project.toml"))
     end

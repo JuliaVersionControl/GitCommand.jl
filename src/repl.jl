@@ -2,11 +2,9 @@ import ReplMaker
 
 function _gitrepl_parser(repl_input::AbstractString)
     return quote
-        GitCommand.git() do git
-            repl_input = $(Expr(:quote, repl_input))
-            run(`$(git) $(split(repl_input))`)
-            return nothing
-        end
+        repl_input = $(Expr(:quote, repl_input))
+        run(`$(GitCommand.git()) $(split(repl_input))`)
+        return nothing
     end
 end
 
