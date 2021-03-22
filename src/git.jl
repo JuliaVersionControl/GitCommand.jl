@@ -33,11 +33,3 @@ function git(; adjust_PATH::Bool = true, adjust_LIBPATH::Bool = true)
         return addenv(original_cmd, env_mapping...)::Cmd
     end
 end
-
-# This function should be deprecated, it's kept only for backward-compatibility
-# We will remove it soon in a breaking release
-function git(f::Function;
-             adjust_PATH::Bool = true,
-             adjust_LIBPATH::Bool = true)
-    return f(git(; adjust_PATH, adjust_LIBPATH))
-end
