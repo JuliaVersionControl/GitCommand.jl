@@ -41,18 +41,6 @@ include("test-utils.jl")
         @test isdir("GitCommand.jl")
         @test isfile(joinpath("GitCommand.jl", "Project.toml"))
     end
-
-    with_temp_dir() do tmp_dir
-        @test !isdir("GitCommand.jl")
-        @test !isfile(joinpath("GitCommand.jl", "Project.toml"))
-        expr = GitCommand._gitrepl_parser("clone https://github.com/JuliaVersionControl/GitCommand.jl")
-        @test expr isa Expr
-        @test !isdir("GitCommand.jl")
-        @test !isfile(joinpath("GitCommand.jl", "Project.toml"))
-        @eval $(expr)
-        @test isdir("GitCommand.jl")
-        @test isfile(joinpath("GitCommand.jl", "Project.toml"))
-    end
 end
 
 @testset "Safety" begin
