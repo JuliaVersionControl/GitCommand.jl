@@ -69,3 +69,7 @@ end
     @test orig_cainfo == get_env("GIT_SSL_CAINFO")
     @test orig_templatedir == get_env("GIT_TEMPLATE_DIR")
 end
+
+@testset "init REPL" begin 
+    @test GitCommand.gitrepl() == nothing
+end
