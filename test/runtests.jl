@@ -1,14 +1,11 @@
 using GitCommand
 using Test
-
-import JLLWrappers
-import REPL
+using JLLWrappers
 
 get_env(env) = get(ENV, env, nothing)
-
-const orig_libpath     = deepcopy(get_env(JLLWrappers.LIBPATH_env))
-const orig_execpath    = deepcopy(get_env("GIT_EXEC_PATH"))
-const orig_cainfo      = deepcopy(get_env("GIT_SSL_CAINFO"))
+const orig_libpath = deepcopy(get_env(JLLWrappers.LIBPATH_env))
+const orig_execpath = deepcopy(get_env("GIT_EXEC_PATH"))
+const orig_cainfo = deepcopy(get_env("GIT_SSL_CAINFO"))
 const orig_templatedir = deepcopy(get_env("GIT_TEMPLATE_DIR"))
 
 include("test-utils.jl")
