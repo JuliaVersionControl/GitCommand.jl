@@ -1,21 +1,21 @@
 name = "GitCommand"
 uuid = "49b5b516-ca3f-4003-a081-42bdcf55082d"
 authors = ["Dilum Aluthge", "Brown Center for Biomedical Informatics"]
-version = "2.2.0"
+version = "2.2.1"
 
 [deps]
-JLLWrappers = "692b3bcd-3c85-4b1f-b108-f13ce0eb3210"
 Git_jll = "f8c6e375-362e-5223-8a59-34ff63f689eb"
 ReplMaker = "b873ce64-0db9-51f5-a568-4457d8e49576"
 
 [compat]
-JLLWrappers = "1.1"
 Git_jll = "2.31"
+JLLWrappers = "1.1"
 ReplMaker = "0.2.3"
 julia = "1.6"
 
 [extras]
+JLLWrappers = "692b3bcd-3c85-4b1f-b108-f13ce0eb3210"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
-test = ["Test"]
+test = ["JLLWrappers", "Test"]
