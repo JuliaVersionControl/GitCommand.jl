@@ -9,10 +9,17 @@ const orig_execpath    = deepcopy(get_env("GIT_EXEC_PATH"))
 const orig_cainfo      = deepcopy(get_env("GIT_SSL_CAINFO"))
 const orig_templatedir = deepcopy(get_env("GIT_TEMPLATE_DIR"))
 
-include("test-utils.jl")
+function withtempdir(f::Function)
+    mktempdir() do tmp_dir
+        cd(tmp_dir) do
+            f(tmp_dir)
+        end
+    end
+    return nothing
+end
 
 @testset "GitCommand.jl" begin
-    with_temp_dir() do tmp_dir
+    withtempdir() do tmp_dir
         @test !isdir("GitCommand.jl")
         @test !isfile(joinpath("GitCommand.jl", "Project.toml"))
         run(`$(git()) clone https://github.com/JuliaVersionControl/GitCommand.jl`)
@@ -20,9 +27,7 @@ include("test-utils.jl")
         @test isfile(joinpath("GitCommand.jl", "Project.toml"))
     end
 
-    with_temp_dir() do tmp_dir
-        @test !isdir("GitCommand.jl")
-        @test !isfile(joinpath("GitCommand.jl", "Project.toml"))
+    withtempdir() do tmp_dir
         @test !isdir("GitCommand.jl")
         @test !isfile(joinpath("GitCommand.jl", "Project.toml"))
         run(`$(git()) clone https://github.com/JuliaVersionControl/GitCommand.jl`)
@@ -30,7 +35,7 @@ include("test-utils.jl")
         @test isfile(joinpath("GitCommand.jl", "Project.toml"))
     end
 
-    with_temp_dir() do tmp_dir
+    withtempdir() do tmp_dir
         @test !isdir("GitCommand.jl")
         @test !isfile(joinpath("GitCommand.jl", "Project.toml"))
         cmd = GitCommand.git`clone https://github.com/JuliaVersionControl/GitCommand.jl`
@@ -41,6 +46,7 @@ include("test-utils.jl")
         @test isdir("GitCommand.jl")
         @test isfile(joinpath("GitCommand.jl", "Project.toml"))
     end
+
 end
 
 @testset "Safety" begin
