@@ -1,6 +1,8 @@
 using GitCommand
 using Test
-using JLLWrappers
+
+import JLLWrappers
+import REPL
 
 get_env(env) = get(ENV, env, nothing)
 const orig_libpath = get_env(JLLWrappers.LIBPATH_env)
