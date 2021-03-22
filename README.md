@@ -10,8 +10,7 @@ your packages!
 
 GitCommand provides a Git binary via
 [Git_jll](https://github.com/JuliaBinaryWrappers/Git_jll.jl).
-Git_jll uses the Pkg Artifacts system, and therefore Git_jll and GitCommand
-require at least Julia 1.3.
+The latest version of GitCommand requires at least Julia 1.6.
 
 GitCommand is intended to work on any platform that supports Julia,
 including (but not limited to) Windows, macOS, Linux, and FreeBSD.
@@ -21,9 +20,7 @@ including (but not limited to) Windows, macOS, Linux, and FreeBSD.
 ```julia
 julia> using GitCommand
 
-julia> git() do git
-           run(`$git clone https://github.com/JuliaRegistries/General`)
-       end
+julia> run(`$(git()) clone https://github.com/JuliaRegistries/General`)
 ```
 
 ## Git REPL mode

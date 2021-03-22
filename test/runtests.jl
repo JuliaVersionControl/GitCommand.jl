@@ -1,5 +1,12 @@
 using GitCommand
 using Test
+using JLLWrappers
+
+get_env(env) = get(ENV, env, nothing)
+const orig_libpath = get_env(JLLWrappers.LIBPATH_env)
+const orig_execpath = get_env("GIT_EXEC_PATH")
+const orig_cainfo = get_env("GIT_SSL_CAINFO")
+const orig_templatedir = get_env("GIT_TEMPLATE_DIR")
 
 include("test-utils.jl")
 
@@ -8,6 +15,14 @@ include("test-utils.jl")
         @test GitCommand._separator() == ';'
     else
         @test GitCommand._separator() == ':'
+    end
+
+    with_temp_dir() do tmp_dir
+        @test !isdir("GitCommand.jl")
+        @test !isfile(joinpath("GitCommand.jl", "Project.toml"))
+        run(`$(git()) clone https://github.com/JuliaVersionControl/GitCommand.jl`)
+        @test isdir("GitCommand.jl")
+        @test isfile(joinpath("GitCommand.jl", "Project.toml"))
     end
 
     with_temp_dir() do tmp_dir
@@ -45,4 +60,12 @@ include("test-utils.jl")
         @test isdir("GitCommand.jl")
         @test isfile(joinpath("GitCommand.jl", "Project.toml"))
     end
+end
+
+@testset "Safety" begin
+    # Make sure `git` commands don't leak environment variables
+    @test orig_libpath == get_env(JLLWrappers.LIBPATH_env)
+    @test orig_execpath == get_env("GIT_EXEC_PATH")
+    @test orig_cainfo == get_env("GIT_SSL_CAINFO")
+    @test orig_templatedir == get_env("GIT_TEMPLATE_DIR")
 end
