@@ -71,5 +71,5 @@ end
 end
 
 @testset "init REPL" begin 
-    @test GitCommand.gitrepl() == nothing
+    @test GitCommand.gitrepl(; repl = REPL.BasicREPL) == nothing
 end
