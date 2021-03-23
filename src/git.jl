@@ -1,3 +1,14 @@
+"""
+    git()
+
+Return a `Cmd` for running Git.
+
+## Example
+
+```julia
+julia> run(`$(git())` clone https://github.com/JuliaVersionControl/GitCommand.jl)
+```
+"""
 function git(; adjust_PATH::Bool = true, adjust_LIBPATH::Bool = true)
     @static if Sys.iswindows()
         return Git_jll.git(; adjust_PATH, adjust_LIBPATH)::Cmd
