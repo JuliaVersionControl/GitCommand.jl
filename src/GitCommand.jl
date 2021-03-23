@@ -2,9 +2,9 @@ module GitCommand
 
 import Git_jll
 
-# export @git_cmd
 export git
 
 include("git.jl")
+include("git_cmd.jl")
 
-end # end module GitCommand
+end # module
