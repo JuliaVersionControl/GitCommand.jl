@@ -7,4 +7,4 @@ export git
 include("git.jl")
 include("git_cmd.jl")
 
-end # end module GitCommand
+end # module
